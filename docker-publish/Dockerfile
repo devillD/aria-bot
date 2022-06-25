@@ -18,7 +18,10 @@ RUN sed -i 's/https\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fas
 # Copy all files from BuildDir to Workdir
 COPY . .
 #Building and Installation
-RUN npm i -g typescript && \
+RUN mv src/.constants.js.example src/.constants.js && \
+    npm i -g typescript && \
     yarn && \
-    tsc
+    tsc && \
+    rm -rf src/.constants.js && \
+    rm -rf out/.constants.js
 CMD ["bash"]
