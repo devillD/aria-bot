@@ -17,9 +17,7 @@ RUN apk add --no-cache --update \
 # Copy all files from BuildDir to Workdir
 COPY . .
 #Building and Installation
-RUN mv src/.constants.js.example src/.constants.js && \
-    npm i -g typescript && \
+RUN npm i -g typescript && \
     yarn && \
-    tsc && \
-    rm -rf src/.constants.js && \
-    rm -rf out/.constants.js
+    tsc
+CMD ["bash"]
